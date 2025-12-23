@@ -49,11 +49,31 @@ PC / ROS / ROS 2
 
 | SBUS 接收机 | ESP32-C3 |
 |----|----|
-| SBUS 信号 | GPIO（9） |
+| SBUS 信号 | GPIO（4） |
 | GND | GND |
 | VCC | 5V  |
 
 ---
+
+准备接收器和ESP32-C3开发板，如下：
+
+![ht-10a-sbus-bridge](./attachments/1766503904323.png)
+
+焊接或者连接引脚，如下：
+
+![ht-10a-sbus-bridge-wiring](./attachments/1766503956298.png)
+
+可以使用热缩管，或者绝缘胶带进行绝缘保护:
+![alt text](./attachments/image.png)
+##  烧录程序
+
+确保已安装 ESP-IDF 工具链和 ESP-IDF 框架。打开esp32 目录，执行以下命令：
+
+```
+idf.py set-target esp32c3
+idf.py build flash monitor -p /dev/ttyUSB0
+```
+这里的-p 参数指定串口设备，例如 /dev/ttyUSB0。
 
 ## 串口输出格式（示例）
 
@@ -76,6 +96,7 @@ CH1:1500 CH2:1500 CH3:1500 CH4:1500 CH5:1500 CH6:2000 CH7:2000 CH8:1500 CH9:2000
 ---
 
 ## 上位机软件
+
 PC 端串口接收器软件，基于 PySide6 开发，支持 Windows / Linux 系统。
 
 ```
@@ -84,7 +105,7 @@ python sbus_receiver.py
 使用图形界面串口接收软件说明
 
 - 连接 ESP32-C3 到 PC
-- 在软件中选择正确的串口
+- 运行pc目录下的 python sbus_receiver.py 脚本，在软件中选择正确的串口
 - 点击 "Connect" 连接设备
 - 操作遥控器，观察通道值变化
 
@@ -93,3 +114,7 @@ python sbus_receiver.py
 ![sbus_receiver_gui](./attachments/1766501708199.png)
 
 
+
+## 许可证
+
+MIT License

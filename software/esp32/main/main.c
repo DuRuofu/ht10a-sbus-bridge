@@ -12,7 +12,7 @@
 /* ================= 配置 ================= */
 
 #define SBUS_UART          UART_NUM_1
-#define SBUS_RX_PIN        9
+#define SBUS_RX_PIN        4
 
 #define SBUS_FRAME_SIZE    25
 #define SBUS_CHANNEL_COUNT 16
